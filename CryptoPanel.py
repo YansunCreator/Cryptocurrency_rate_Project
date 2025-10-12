@@ -33,6 +33,7 @@ class CryptoPanel:
         root.title("Crypto Panel")        # Заголовок окна
         root.configure(bg="black")        # Чёрный фон
         root.resizable(False, False)      # Запрет изменения размеров
+        root.iconphoto(False, PhotoImage(file="logo_cp.png")) # Логотип вместо пера
 
         # Переменные состояния
         self.fiat = "usd"                 # Валюта по умолчанию
