@@ -14,7 +14,7 @@ import threading                # Для фонового запроса (что
 import requests                 # Для HTTP-запросов к API CoinGecko
 from tkinter import *            # Основные виджеты Tkinter
 from tkinter import ttk, messagebox
-from datetime import datetime    # Для вывода времени получения курса
+from datetime import datetime # Для вывода времени получения курса
 
 # Базовый URL CoinGecko API
 COINGECKO_SIMPLE = "https://api.coingecko.com/api/v3/simple/price"
