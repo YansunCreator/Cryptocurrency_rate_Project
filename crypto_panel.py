@@ -125,6 +125,7 @@ class CryptoPanel:
         self.top.withdraw()  # Скрываем при запуске
         self.notebook = ttk.Notebook(self.top)
         self.notebook.pack(expand=True, fill="both", padx=6, pady=6)
+        self.top.iconphoto(False, PhotoImage(file="logo_cp.png"))
 
     # --- Показ / скрытие вкладок ---
     def _toggle_notebook(self):
@@ -217,7 +218,8 @@ class CryptoPanel:
     def _on_convert(self):
         try:
             amt = float(self.amount_var.get())
-        except Exception:
+        except Exception as e:
+            self.root.after(0, lambda msg=str(e): self._on_error(msg))
             messagebox.showwarning("Ошибка", "Введите число для конвертации!")
             return
         if not self.tab_refs:
@@ -225,7 +227,7 @@ class CryptoPanel:
             return
         coin_id, fiat, price = self.tab_refs[-1]
         total = amt * price
-        self.result_var.set(f"{amt} {coin_id} = {total:.3f} {fiat.upper()} (по цене {price:.3f})")
+        self.result_var.set(f"{amt} {coin_id} = {total:.3f} {fiat.upper()}\n(по цене {price:.3f})")
 
 
 # --- Точка входа ---
